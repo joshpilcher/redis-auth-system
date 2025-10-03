@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+<!--
+Purpose: User landing page after login.
+ - Greets the user by first name
+ - Placeholder cards for future features (locations & availability)
+ - Admin-only option: export login logs
+ - Logout button
+-->
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header text-center">
+        <h3><i class="fas fa-campground"></i> Find a Campsite</h3>
+    </div>
+
+    <div class="card-body p-5">
+        <!-- Welcome message -->
+        <div class="text-center mb-4">
+            <i class="fas fa-mountain fa-4x text-primary"></i>
+        </div>
+        <h4 class="text-center mb-4">Welcome, {{ first_name }}! 👋</h4>
+        <p class="text-center text-muted mb-4">
+            Ready to find your perfect camping spot? Use our search tools to discover amazing campsites.
+        </p>
+
+        <!-- Feature placeholders -->
+        <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt fa-2x text-info mb-2"></i>
+                        <h6>Browse Locations</h6>
+                        <small class="text-muted">Coming soon!</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-alt fa-2x text-success mb-2"></i>
+                        <h6>Check Availability</h6>
+                        <small class="text-muted">Coming soon!</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin and logout actions -->
+        <div class="d-grid gap-2">
+            {% if session.is_admin %}
+            <a href="{{ url_for('export_logs') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-download"></i> Export Login Logs
+            </a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">
+                <i class="fas fa-sign-out-alt"></i> Sign Out
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+
+<!--
+Purpose: Landing page of the app.
+ - Welcomes users
+ - Links to login, register, and forgot password pages
+-->
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header text-center">
+        <h2><i class="fa-solid fa-campground"></i> Welcome to Campsite Finder</h2>
+    </div>
+
+    <div class="card-body p-5">
+        <!-- Intro icon + tagline -->
+        <div class="text-center mb-4">
+            <i class="fa-solid fa-tree fa-3x text-success"></i>
+        </div>
+
+        <p class="text-center mb-4">
+            Discover and book the perfect campsite for your next adventure!
+        </p>
+
+        <!-- Primary actions -->
+        <div class="d-grid gap-2">
+            <a href="{{ url_for('login') }}" class="btn btn-primary">
+                <i class="fa-solid fa-right-to-bracket"></i> Login
+            </a>
+            <a href="{{ url_for('register') }}" class="btn btn-outline-primary">
+                <i class="fa-solid fa-user-plus"></i> Create Account
+            </a>
+        </div>
+
+        <!-- Forgot password link -->
+        <div class="text-center mt-3">
+            <a href="{{ url_for('forgot_password') }}" class="text-decoration-none">
+                <i class="fa-solid fa-key"></i> Forgot Password?
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

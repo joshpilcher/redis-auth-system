@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+<!--
+Purpose: User login page.
+ - Collects email and password
+ - Includes password toggle (handled by base.html script)
+ - Links to forgot password and registration
+-->
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header text-center">
+        <h3><i class="fas fa-sign-in-alt"></i> Login</h3>
+    </div>
+
+    <div class="card-body p-4">
+        <!-- Login form -->
+        <form method="POST" action="{{ url_for('login') }}">
+            <!-- Email input -->
+            <div class="mb-3">
+                <label for="email" class="form-label">
+                    <i class="fas fa-envelope"></i> Email Address
+                </label>
+                <input type="email" class="form-control" id="email" name="email" required autofocus>
+            </div>
+
+            <!-- Password input with toggle -->
+            <div class="mb-4">
+                <label for="password" class="form-label">
+                    <i class="fas fa-lock"></i> Password
+                </label>
+                <div class="input-with-icon">
+                    <input type="password" class="form-control" id="password" name="password" required
+                        autocomplete="current-password">
+                    <button class="password-btn" type="button" id="togglePassword" aria-label="Show password"
+                        data-bs-toggle="tooltip" data-bs-placement="left" title="Show password">
+                        <svg class="icon-20" aria-hidden="true" focusable="false">
+                            <use id="togglePasswordIconUse" href="#bi-eye-slash"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </div>
+        </form>
+
+        <!-- Links for recovery and registration -->
+        <div class="text-center mt-3">
+            <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+        </div>
+        <div class="text-center mt-2">
+            Don’t have an account? <a href="{{ url_for('register') }}">Register here</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+<!--
+Purpose: New user registration page.
+ - Collects email, first name, password, and security question/answer
+ - Includes password + confirm password with toggle (handled by base.html script)
+ - Provides link to login page if account already exists
+-->
+
+{% block content %}
+<div class="card mt-5">
+    <div class="card-header text-center">
+        <h3><i class="fas fa-user-plus"></i> Create Account</h3>
+    </div>
+
+    <div class="card-body p-4">
+        <!-- Registration form -->
+        <form method="POST" action="{{ url_for('register') }}">
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <!-- First name -->
+            <div class="mb-3">
+                <label for="first_name" class="form-label"><i class="fas fa-user"></i> First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+                <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
+                <div class="input-with-icon">
+                    <input type="password" class="form-control" id="password" name="password" required
+                        autocomplete="new-password" minlength="8">
+                    <button class="password-btn" type="button" id="togglePassword" aria-label="Show password"
+                        data-bs-toggle="tooltip" data-bs-placement="left" title="Show password">
+                        <svg class="icon-20" aria-hidden="true" focusable="false">
+                            <use id="togglePasswordIconUse" href="#bi-eye-slash"></use>
+                        </svg>
+                    </button>
+                </div>
+                <small class="form-text text-muted">At least 8 characters</small>
+            </div>
+
+            <!-- Confirm password -->
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label"><i class="fas fa-lock"></i> Confirm Password</label>
+                <div class="input-with-icon">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required
+                        autocomplete="new-password" minlength="8">
+                    <button class="password-btn" type="button" id="toggleConfirm" aria-label="Show password"
+                        data-bs-toggle="tooltip" data-bs-placement="left" title="Show password">
+                        <svg class="icon-20" aria-hidden="true" focusable="false">
+                            <use id="toggleConfirmIconUse" href="#bi-eye-slash"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Security question -->
+            <div class="mb-3">
+                <label for="security_question" class="form-label"><i class="fas fa-question-circle"></i> Security Question</label>
+                <select class="form-select" id="security_question" name="security_question" required>
+                    <option value="">Choose a question...</option>
+                    {% for q_id, q_text in questions %}
+                    <option value="{{ q_id }}">{{ q_text }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Security answer -->
+            <div class="mb-4">
+                <label for="security_answer" class="form-label"><i class="fas fa-shield-alt"></i> Security Answer</label>
+                <input type="text" class="form-control" id="security_answer" name="security_answer" required>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Create Account</button>
+            </div>
+        </form>
+
+        <!-- Link to login -->
+        <div class="text-center mt-3">
+            Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
