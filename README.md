@@ -78,18 +78,19 @@ python smoke_test.py
 
 redis-auth-system/
 │
-├── app.py # Main Flask app
-├── smoke_test.py # Automated smoke tests
-├── sample_data.csv # Example CSV data template
-├── .env.example # Example environment config
+├── app.py              # Main Flask app
+├── smoke_test.py       # Automated smoke tests
+├── sample_data.csv     # Example CSV data template
+├── .env.example        # Example environment config
 ├── .gitignore
-└── templates/ # HTML templates
-├── base.html
-├── dashboard.html
-├── forgot_password.html
-├── index.html
-├── login.html
-└── register.html
+└── templates/          # HTML templates
+    ├── base.html
+    ├── dashboard.html
+    ├── forgot_password.html
+    ├── index.html
+    ├── login.html
+    └── register.html
+
 
 ⚖️ License
 
