@@ -92,6 +92,7 @@ redis-auth-system/
     └── register.html
 
 
+
 ⚖️ License
 
 MIT License – feel free to use and adapt for learning purposes.
