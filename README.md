@@ -2,23 +2,23 @@ Redis-based Authentication System with Flask Web Interface
 
 This project implements a secure user authentication and management system using Redis as the backend database and Flask for the web interface.
 
-It was developed as part of a database programming course and awarded 40/40 (High Distinction) with feedback highlighting it as “skilfully constructed, efficient, with a flawless GUI and faultless documentation.”
+It was developed as part of a database programming course and awarded 40/40 (High Distinction)
 
 🚀 Features
 
-🔐 User registration with email validation and security questions
+User registration with email validation and security questions
 
-🔑 Secure password storage using salted bcrypt hashing
+Secure password storage using salted bcrypt hashing
 
-🔄 Password recovery via security questions
+Password recovery via security questions
 
-⏳ Rate limiting to prevent brute force attacks
+Rate limiting to prevent brute force attacks
 
-🛠️ Admin functionality for exporting login logs (CSV)
+Admin functionality for exporting login logs (CSV)
 
-📂 CSV import for test data
+CSV import for test data
 
-🌐 Flask-based GUI with session management
+Flask-based GUI with session management
 
 📦 Installation
 1. Clone the repository
@@ -77,12 +77,19 @@ python smoke_test.py
 📂 Project Structure
 
 redis-auth-system/
+│
 ├── app.py # Main Flask app
 ├── smoke_test.py # Automated smoke tests
 ├── sample_data.csv # Example CSV data template
 ├── .env.example # Example environment config
 ├── .gitignore
 └── templates/ # HTML templates
+├── base.html
+├── dashboard.html
+├── forgot_password.html
+├── index.html
+├── login.html
+└── register.html
 
 ⚖️ License
 
