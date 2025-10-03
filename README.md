@@ -1,10 +1,10 @@
-Redis-based Authentication System with Flask Web Interface
+## Redis-based Authentication System with Flask Web Interface
 
 This project implements a secure user authentication and management system using Redis as the backend database and Flask for the web interface.
 
 It was developed as part of a database programming course and awarded 40/40 (High Distinction)
 
-🚀 Features
+## 🚀 Features
 
 User registration with email validation and security questions
 
@@ -20,14 +20,14 @@ CSV import for test data
 
 Flask-based GUI with session management
 
-📦 Installation
-1. Clone the repository
+## 📦 Installation
+# 1. Clone the repository
 
 git clone https://github.com/joshpilcher/redis-auth-system.git
 
 cd redis-auth-system
 
-2. Create a virtual environment & install dependencies
+# 2. Create a virtual environment & install dependencies
 
 python -m venv venv
 source venv/bin/activate # Mac/Linux
@@ -35,7 +35,7 @@ venv\Scripts\activate # Windows
 
 pip install -r requirements.txt
 
-3. Configure environment variables
+# 3. Configure environment variables
 
 Copy the example file and update as needed:
 cp .env.example .env
@@ -46,18 +46,18 @@ REDIS_PORT=6379
 REDIS_USER=default
 REDIS_PASSWORD=changeme
 
-4. Run Redis
+# 4. Run Redis
 
 Local install or Docker:
 docker run -d -p 6379:6379 redis
 
-5. Start the app
+# 5. Start the app
 
 python app.py
 
 The app will run at: http://localhost:5000
 
-🧪 Testing
+## 🧪 Testing
 
 A smoke test suite (smoke_test.py) is included to verify:
 
@@ -95,6 +95,6 @@ redis-auth-system/
 
 
 
-⚖️ License
+## ⚖️ License
 
 MIT License – feel free to use and adapt for learning purposes.
