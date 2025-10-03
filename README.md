@@ -74,8 +74,9 @@ Admin login & CSV export
 Run with:
 python smoke_test.py
 
-📂 Project Structure
+## 📂 Project Structure
 
+```text
 redis-auth-system/
 │
 ├── app.py              # Main Flask app
@@ -90,6 +91,7 @@ redis-auth-system/
     ├── index.html
     ├── login.html
     └── register.html
+```
 
 
 
