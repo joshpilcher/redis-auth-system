@@ -2,7 +2,7 @@
 
 This project implements a secure user authentication and management system using Redis as the backend database and Flask for the web interface.
 
-It was developed as part of a database programming course and awarded 40/40 (High Distinction)
+It was developed as part of a database programming course and awarded 40/40 (High Distinction).
 
 ## 🚀 Features
 
