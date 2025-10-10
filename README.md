@@ -86,7 +86,7 @@ python smoke_test.py
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 redis-auth-system/
