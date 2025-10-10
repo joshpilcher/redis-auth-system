@@ -11,7 +11,7 @@ It was developed as part of a database programming course and awarded **40/40 (H
 
 ---
 
-## 🚀 Features
+## Features
 
 - User registration with email validation and security questions  
 - Secure password storage using salted bcrypt hashing  
@@ -23,7 +23,7 @@ It was developed as part of a database programming course and awarded **40/40 (H
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### 1. Clone the repository
 ```bash
@@ -69,7 +69,7 @@ The app will run at: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🧪 Testing
+## Testing
 
 A smoke test suite (`smoke_test.py`) is included to verify:  
 
@@ -108,12 +108,12 @@ redis-auth-system/
 
 ---
 
-## 🏆 Achievement
+## Achievement
 
 - Awarded **40/40 (High Distinction)** in Database Programming  
 
 ---
 
-## ⚖️ License
+## License
 
 MIT License – feel free to use and adapt for learning purposes.  
