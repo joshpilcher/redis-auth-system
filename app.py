@@ -23,11 +23,11 @@ Version: 3.4
 
 """
 
-# =========================
+
 # Imports
-# =========================
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash, send_file  # Flask framework and utilities for web application
-import bcrypt  # For secure password hashing
+import bcrypt  # Secure password hashing
 import redis  # Redis database client
 import csv  # CSV file processing for bulk imports
 import re  # Regular expressions for validation
@@ -40,9 +40,8 @@ import os
 
 load_dotenv()
 
-# =========================
+
 # Application Configuration
-# =========================
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)  # Flask app initialization with secure session key
@@ -56,9 +55,8 @@ REDIS = redis.Redis(
     decode_responses=True
 )
 
-# =========================
+
 # Constants
-# =========================
 
 # Redis keys
 LOG_LIST_KEY = "logs:login"            # Redis list for login attempts
@@ -74,9 +72,8 @@ MAX_LOGIN_ATTEMPTS = 5                 # Failed attempts before lockout
 LOCKOUT_DURATION = 900                 # Lockout duration (15 minutes)
 
 
-# =========================
 # Utility Functions
-# =========================
+
 def now_str():
     """Generate current timestamp string for logging."""
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -115,9 +112,7 @@ def norm_answer(s):
     return " ".join(s.strip().casefold().split())
 
 
-# =========================
 # Validation Functions
-# =========================
 
 def password_ok(pw):
     """Validate password meets security requirements."""
@@ -180,9 +175,7 @@ def validate_user_exists(email):
     return REDIS.sismember(USER_INDEX_SET, email)
 
 
-# =========================
 # Rate Limiting
-# =========================
 
 def check_limit(key_prefix, email, attempt_type="login"):
     """Check if user is rate limited for a given type."""
@@ -212,10 +205,8 @@ def clear_attempts(key_prefix, email):
     REDIS.delete(f"{key_prefix}:{email}")
 
 
-# =========================
 # Logging Functions
-# =========================
-    
+
 def log_login_attempt(email, success):
     """Record login attempt to Redis log list."""
     if not REDIS.sismember(USER_INDEX_SET, email):
@@ -256,9 +247,7 @@ def get_logs_csv(max_rows=10000):
     return output.getvalue()
 
 
-# =========================
-# Security Questions Management
-# =========================
+# Security Question Management
 
 def seed_security_questions_if_missing():
     """Seed default security questions if they don't exist in Redis."""
@@ -290,10 +279,8 @@ def fetch_security_questions():
         return sorted(data.items(), key=lambda kv: kv[0])
 
 
-# =========================
 # Admin Account Management
-# =========================
-    
+
 def create_admin_account():
     """Create default admin account if it doesn't exist."""
     admin_email = "admin@outlook.com"
@@ -314,9 +301,7 @@ def create_admin_account():
     return False
 
 
-# =========================
 # CSV Import Function
-# =========================
 
 def import_from_csv(csv_path, batch_size=50):
     """Import users from CSV file with batch processing."""
@@ -381,10 +366,8 @@ def import_from_csv(csv_path, batch_size=50):
         print(f"❌ CSV import failed: {e}")
 
 
-# =========================
 # Decorators
-# =========================
-        
+
 def login_required(f):
     """Decorator to require user authentication for protected routes."""
     @wraps(f)
@@ -407,9 +390,7 @@ def admin_required(f):
     return decorated
 
 
-# =========================
 # Initialization
-# =========================
 
 @app.before_request
 def initialize():
@@ -421,10 +402,8 @@ def initialize():
         print(f"❌ Could not connect to Redis: {e}")
 
 
-# =========================
 # Routes
-# =========================
-        
+
 @app.route("/")
 def index():
     """Display homepage."""
@@ -637,7 +616,7 @@ def forgot_password():
                     "forgot_password.html", step=2, question=session.get("reset_question")
                 )
 
-            # Success → clear attempts
+            # Success - clear attempts
             clear_attempts("rate_limit_sa", email)
 
             session["reset_verified"] = True
@@ -703,9 +682,7 @@ def export_logs():
     )
 
 
-# =========================
 # Main Application Entry Point
-# =========================
 
 if __name__ == "__main__":
     print("🔄 Initialising application...")
@@ -729,3 +706,4 @@ if __name__ == "__main__":
     
     # Start application
     app.run(port=5000)
+
